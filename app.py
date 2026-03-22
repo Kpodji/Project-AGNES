@@ -278,7 +278,12 @@ with tab3:
     fig.tight_layout()
     st.pyplot(fig)
 
-    st.dataframe(fi.rename("importance").reset_index(names="variable"), use_container_width=True)
+    st.dataframe(
+    fi.rename("importance")
+    .reset_index()
+    .rename(columns={"index":"variable"}),
+    width="stretch"
+)
 
 with tab4:
     st.subheader("Carte des observations par région")
